@@ -1006,7 +1006,6 @@ export namespace Prisma {
     id: number | null
     username: string | null
     name: string | null
-    email: string | null
     bio: string | null
   }
 
@@ -1014,7 +1013,6 @@ export namespace Prisma {
     id: number | null
     username: string | null
     name: string | null
-    email: string | null
     bio: string | null
   }
 
@@ -1022,7 +1020,6 @@ export namespace Prisma {
     id: number
     username: number
     name: number
-    email: number
     bio: number
     _all: number
   }
@@ -1040,7 +1037,6 @@ export namespace Prisma {
     id?: true
     username?: true
     name?: true
-    email?: true
     bio?: true
   }
 
@@ -1048,7 +1044,6 @@ export namespace Prisma {
     id?: true
     username?: true
     name?: true
-    email?: true
     bio?: true
   }
 
@@ -1056,7 +1051,6 @@ export namespace Prisma {
     id?: true
     username?: true
     name?: true
-    email?: true
     bio?: true
     _all?: true
   }
@@ -1151,7 +1145,6 @@ export namespace Prisma {
     id: number
     username: string
     name: string
-    email: string
     bio: string | null
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
@@ -1178,7 +1171,6 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     name?: boolean
-    email?: boolean
     bio?: boolean
     posts?: boolean | User$postsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1188,7 +1180,6 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     name?: boolean
-    email?: boolean
     bio?: boolean
   }, ExtArgs["result"]["user"]>
 
@@ -1196,7 +1187,6 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     name?: boolean
-    email?: boolean
     bio?: boolean
   }, ExtArgs["result"]["user"]>
 
@@ -1204,11 +1194,10 @@ export namespace Prisma {
     id?: boolean
     username?: boolean
     name?: boolean
-    email?: boolean
     bio?: boolean
   }
 
-  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name" | "email" | "bio", ExtArgs["result"]["user"]>
+  export type UserOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "username" | "name" | "bio", ExtArgs["result"]["user"]>
   export type UserInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     posts?: boolean | User$postsArgs<ExtArgs>
     _count?: boolean | UserCountOutputTypeDefaultArgs<ExtArgs>
@@ -1225,7 +1214,6 @@ export namespace Prisma {
       id: number
       username: string
       name: string
-      email: string
       bio: string | null
     }, ExtArgs["result"]["user"]>
     composites: {}
@@ -1654,7 +1642,6 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'Int'>
     readonly username: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
-    readonly email: FieldRef<"User", 'String'>
     readonly bio: FieldRef<"User", 'String'>
   }
     
@@ -3180,7 +3167,6 @@ export namespace Prisma {
     id: 'id',
     username: 'username',
     name: 'name',
-    email: 'email',
     bio: 'bio'
   };
 
@@ -3256,7 +3242,6 @@ export namespace Prisma {
     id?: IntFilter<"User"> | number
     username?: StringFilter<"User"> | string
     name?: StringFilter<"User"> | string
-    email?: StringFilter<"User"> | string
     bio?: StringNullableFilter<"User"> | string | null
     posts?: PostListRelationFilter
   }
@@ -3265,14 +3250,12 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
-    email?: SortOrder
     bio?: SortOrderInput | SortOrder
     posts?: PostOrderByRelationAggregateInput
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
     id?: number
-    email?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
@@ -3280,13 +3263,12 @@ export namespace Prisma {
     name?: StringFilter<"User"> | string
     bio?: StringNullableFilter<"User"> | string | null
     posts?: PostListRelationFilter
-  }, "id" | "email">
+  }, "id">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
-    email?: SortOrder
     bio?: SortOrderInput | SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
@@ -3302,7 +3284,6 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"User"> | number
     username?: StringWithAggregatesFilter<"User"> | string
     name?: StringWithAggregatesFilter<"User"> | string
-    email?: StringWithAggregatesFilter<"User"> | string
     bio?: StringNullableWithAggregatesFilter<"User"> | string | null
   }
 
@@ -3361,7 +3342,6 @@ export namespace Prisma {
   export type UserCreateInput = {
     username: string
     name: string
-    email: string
     bio?: string | null
     posts?: PostCreateNestedManyWithoutUserInput
   }
@@ -3370,7 +3350,6 @@ export namespace Prisma {
     id?: number
     username: string
     name: string
-    email: string
     bio?: string | null
     posts?: PostUncheckedCreateNestedManyWithoutUserInput
   }
@@ -3378,7 +3357,6 @@ export namespace Prisma {
   export type UserUpdateInput = {
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     posts?: PostUpdateManyWithoutUserNestedInput
   }
@@ -3387,7 +3365,6 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
     bio?: NullableStringFieldUpdateOperationsInput | string | null
     posts?: PostUncheckedUpdateManyWithoutUserNestedInput
   }
@@ -3396,14 +3373,12 @@ export namespace Prisma {
     id?: number
     username: string
     name: string
-    email: string
     bio?: string | null
   }
 
   export type UserUpdateManyMutationInput = {
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
     bio?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -3411,7 +3386,6 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
     bio?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -3518,7 +3492,6 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
-    email?: SortOrder
     bio?: SortOrder
   }
 
@@ -3530,7 +3503,6 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
-    email?: SortOrder
     bio?: SortOrder
   }
 
@@ -3538,7 +3510,6 @@ export namespace Prisma {
     id?: SortOrder
     username?: SortOrder
     name?: SortOrder
-    email?: SortOrder
     bio?: SortOrder
   }
 
@@ -3918,7 +3889,6 @@ export namespace Prisma {
   export type UserCreateWithoutPostsInput = {
     username: string
     name: string
-    email: string
     bio?: string | null
   }
 
@@ -3926,7 +3896,6 @@ export namespace Prisma {
     id?: number
     username: string
     name: string
-    email: string
     bio?: string | null
   }
 
@@ -3949,7 +3918,6 @@ export namespace Prisma {
   export type UserUpdateWithoutPostsInput = {
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
     bio?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
@@ -3957,7 +3925,6 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     username?: StringFieldUpdateOperationsInput | string
     name?: StringFieldUpdateOperationsInput | string
-    email?: StringFieldUpdateOperationsInput | string
     bio?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
