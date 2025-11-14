@@ -38,6 +38,27 @@ app.post('/items', async (req, res) => {
     res.status(201).json(item);
 });
 
+
+app.put("/items/:id/toggle", async (req, res) => {
+    const id = req.params.id;
+    const currentItem = await prisma.todo.findFirst({
+        where: { id: Number(id) }
+    });
+
+    if(currentItem) {
+        const updateItem = await prisma.todo.update({
+            where: { id: Number(id) },
+            data: {
+                done: !currentItem.done,
+            },
+        });
+
+        return res.json(updateItem);
+    }
+
+    res.status(404).json({ msg: 'Item not found!' });
+});
+
 app.delete('/items/:id', async (req, res) => {
         const id = req.params.id;
         const item = await prisma.todo.delete({
