@@ -132,6 +132,12 @@ exports.Prisma.PostScalarFieldEnum = {
   created: 'created'
 };
 
+exports.Prisma.TodoScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  done: 'done'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -145,7 +151,8 @@ exports.Prisma.NullsOrder = {
 
 exports.Prisma.ModelName = {
   User: 'User',
-  Post: 'Post'
+  Post: 'Post',
+  Todo: 'Todo'
 };
 
 /**

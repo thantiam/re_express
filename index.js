@@ -4,26 +4,40 @@ const app = express();
 app.use(express.json());
 app.use(express.urlencoded());
 
-app.get('/items', (req, res) => {
-    res.json({msg : "express get..."});
+const { PrismaClient } = require("./generated/prisma");
+const prisma = new PrismaClient();
+
+app.get('/items', async (req, res) => {
+    const items = await prisma.todo.findMany();
+    res.json(items);
 });
 
 
-app.get('/items/:id', (req, res) => {
+app.get('/items/:id', async (req, res) => {
         const id = req.params.id;
-    res.status(200).json({msg : `express get ...${id}`});
+        const item = await prisma.todo.findFirst({
+            where: { id: Number(id) }
+        });
+    res.status(200).json(item);
 });
 
 
-app.post('/items', (req, res) => {
+app.post('/items', async (req, res) => {
         const name = req.body?.name;
             if(!name) { res.status(400).json({msg: "name required..."}) };
-    res.status(201).json({msg : `express post by ... ${name}`});
+        
+        const item = await prisma.todo.create({
+            data: { name: name, }
+        });    
+    res.status(201).json(item);
 });
 
-app.delete('/items/:id', (req, res) => {
+app.delete('/items/:id', async (req, res) => {
         const id = req.params.id;
-    res.status(200).json({msg : `express remove ...${id}`});
+        const item = await prisma.todo.delete({
+            where: { id: Number(id), }
+        });
+    res.status(200).json(item);
 });
 
-app.listen(6000, () => { console.log("express runs @ 6000...") });
+app.listen(8800, () => { console.log("express runs @ 8800...") });
