@@ -12,7 +12,10 @@ const prisma = new PrismaClient();
 
 app.get('/items', async (req, res) => {
     const items = await prisma.todo.findMany();
-    res.json(items);
+    
+    setTimeout( () => {
+        res.json(items);
+    } ,3000);
 });
 
 
